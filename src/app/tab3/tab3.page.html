@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="danger">
+    <ion-title>
+      Camera
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Camera</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <div class="row mb-2">
+    <div class="col-12 col-md-4 offset-md-4 text-center">
+        <video *ngIf="videoCapable" #video1 width="300" autoplay class="has-picture"></video>
+        <div *ngIf="!videoCapable">Access to camera denied</div>
+    </div>
+  </div>
+  <div class="row mb-2" *ngIf="videoCapable">
+    <div class="col-12 col-md-4 offset-md-4 text-center">
+      <ion-button (click)="onSnap()">
+        Take Snap
+      </ion-button>
+      <ion-button (click)="switchCamera()">
+        Switch Camera
+      </ion-button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-4 offset-md-4 py-2 px-2 mb-1">
+        <canvas #canvas1 width="100%" [ngClass]="{ 'has-picture' : pictureTaken }">></canvas>
+    </div>
+  </div>
+  <div class="row mb-5" *ngIf="pictureTaken">
+    <div class="col-12 col-md-4 offset-md-4 text-center">
+      <a class="btn btn-primary btn-lg" href="{{downloadLink}}" download="image.png"><i class="fa fa-download"></i> Download</a>
+    </div>
+  </div>
+</ion-content>

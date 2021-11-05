@@ -1,0 +1,7 @@
+{
+  "name": "darwin-mobile-ui2",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
